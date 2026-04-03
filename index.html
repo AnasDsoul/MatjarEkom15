@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="bdIntelligent AuraDock Pro — premium magnetic desk dock. Order now with fast delivery across Bangladesh." />
+  <title>bdIntelligent — AuraDock Pro | Order Now</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f4f6f9;
+      --surface: #ffffff;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --trust: #1e3a5f;
+      --trust-light: #2d4a6f;
+      --accent: #f97316;
+      --accent-hover: #ea580c;
+      --accent-glow: rgba(249, 115, 22, 0.35);
+      --success: #059669;
+      --star: #fbbf24;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 20px 50px rgba(15, 23, 42, 0.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(1120px, 100% - 2rem);
+      margin-inline: auto;
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 0;
+      gap: 1rem;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      color: var(--trust);
+    }
+    .logo span { color: var(--accent); font-weight: 700; }
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 1.25rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent) 0%, #ea580c 100%);
+      border-radius: 999px;
+      box-shadow: 0 4px 16px var(--accent-glow);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .header-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 22px var(--accent-glow);
+    }
+    .header-cta:active { transform: translateY(0); }
+
+    /* Hero */
+    .hero {
+      padding: clamp(2rem, 5vw, 3.5rem) 0 clamp(3rem, 6vw, 4.5rem);
+      background: linear-gradient(180deg, #fff 0%, var(--bg) 100%);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(2rem, 4vw, 3rem);
+      align-items: center;
+    }
+    @media (min-width: 900px) {
+      .hero-grid { grid-template-columns: 1.05fr 0.95fr; }
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-radius: 999px;
+      background: rgba(249, 115, 22, 0.12);
+      color: #c2410c;
+    }
+    .pill--trust {
+      background: rgba(30, 58, 95, 0.1);
+      color: var(--trust);
+    }
+
+    .hero h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.85rem, 4.5vw, 2.65rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+    .hero-lead {
+      margin: 0 0 1.25rem;
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 36ch;
+    }
+
+    .price-block {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.75rem 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .price-current {
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 800;
+      color: var(--trust);
+      letter-spacing: -0.02em;
+    }
+    .price-was {
+      font-size: 1.1rem;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+    .price-save {
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      background: #fef3c7;
+      color: #b45309;
+      border-radius: 6px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 1.75rem;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+    }
+    .btn--primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent) 0%, #ea580c 100%);
+      box-shadow: 0 6px 24px var(--accent-glow);
+    }
+    .btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px var(--accent-glow);
+    }
+    .btn--ghost {
+      background: var(--surface);
+      color: var(--trust);
+      border: 2px solid rgba(30, 58, 95, 0.15);
+    }
+    .btn--ghost:hover {
+      border-color: var(--trust);
+      background: rgba(30, 58, 95, 0.04);
+    }
+    .btn:active { transform: translateY(0); }
+
+    .micro-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .micro-trust strong { color: var(--ink); }
+
+    .hero-visual {
+      position: relative;
+      border-radius: calc(var(--radius) + 6px);
+      overflow: hidden;
+      background: linear-gradient(145deg, #e8eef5 0%, #dce4ee 100%);
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: 4/3;
+    }
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-float {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      padding: 0.75rem 1rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--trust);
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    /* Benefits */
+    .section { padding: clamp(2.5rem, 5vw, 4rem) 0; }
+    .section-title {
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.5rem, 3vw, 1.85rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-align: center;
+    }
+    .section-sub {
+      margin: 0 auto 2rem;
+      max-width: 520px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 640px) {
+      .benefits { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 900px) {
+      .benefits { grid-template-columns: repeat(4, 1fr); }
+    }
+    .benefit-card {
+      background: var(--surface);
+      padding: 1.35rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(15, 23, 42, 0.05);
+    }
+    .benefit-card h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .benefit-card p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .benefit-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(30, 58, 95, 0.12), rgba(249, 115, 22, 0.1));
+      display: grid;
+      place-items: center;
+      margin-bottom: 0.85rem;
+      font-size: 1.25rem;
+    }
+
+    /* Order form */
+    .order-section {
+      background: linear-gradient(180deg, var(--bg) 0%, #e8edf3 100%);
+    }
+    .order-card {
+      max-width: 520px;
+      margin-inline: auto;
+      background: var(--surface);
+      padding: clamp(1.5rem, 4vw, 2.25rem);
+      border-radius: calc(var(--radius) + 4px);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+    .order-card h2 {
+      margin: 0 0 0.35rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-align: center;
+    }
+    .order-card > p {
+      margin: 0 0 1.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--trust);
+      margin-bottom: 0.35rem;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      font-family: inherit;
+      font-size: 1rem;
+      border: 2px solid rgba(15, 23, 42, 0.1);
+      border-radius: 10px;
+      background: #fafbfc;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--trust);
+      box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.12);
+      background: #fff;
+    }
+    .form-group textarea {
+      min-height: 88px;
+      resize: vertical;
+    }
+    .form-submit {
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+    .form-note {
+      margin: 1rem 0 0;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 1.5rem;
+      background: #ecfdf5;
+      border-radius: var(--radius);
+      color: #065f46;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+    .form-success.is-visible { display: block; }
+
+    /* Reviews */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    @media (min-width: 720px) {
+      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1000px) {
+      .reviews-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .review-card {
+      background: var(--surface);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(15, 23, 42, 0.05);
+    }
+    .review-head {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 0.85rem;
+    }
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--trust), var(--trust-light));
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .review-meta h4 {
+      margin: 0;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+    .review-meta span {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .stars {
+      color: var(--star);
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+    }
+    .review-card p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .review-verified {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--success);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 2rem 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border-top: 1px solid rgba(15, 23, 42, 0.08);
+      background: var(--surface);
+    }
+    .footer strong { color: var(--trust); }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="wrap header-inner">
+      <a href="#" class="logo">bd<span>Intelligent</span></a>
+      <a href="#order" class="header-cta">Order Now</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="badge-row">
+            <span class="pill">Featured accessory</span>
+            <span class="pill pill--trust">Trusted by 2,400+ buyers</span>
+          </div>
+          <h1>BdIntelligent une tres platforme qui peux résoudre tous problem</h1>
+          <p class="hero-lead">
+            One-touch alignment, stable viewing angle, and a cable-friendly base so your phone stays charged and visible while you work, cook, or unwind.
+          </p>
+          <div class="price-block">
+            <span class="price-current">৳2,450</span>
+            <span class="price-was">৳3,200</span>
+            <span class="price-save">Save ৳750 today</span>
+          </div>
+          <div class="hero-ctas">
+            <a href="#order" class="btn btn--primary">Order Now</a>
+            <a href="#reviews" class="btn btn--ghost">See reviews</a>
+          </div>
+          <div class="micro-trust">
+            <span><strong>Free</strong> delivery in major cities</span>
+            <span><strong>7-day</strong> easy return</span>
+            <span><strong>Cash</strong> on delivery</span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img
+            src="C:\Users\Anas\Desktop\TestSite\Dash.png"
+            alt="AuraDock Pro premium magnetic phone dock on a clean desk"
+            width="900"
+            height="675"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <div class="hero-float">Aluminum build · 360° swivel · Works with MagSafe &amp; magnetic rings</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="benefits-heading">
+      <div class="wrap">
+        <h2 id="benefits-heading" class="section-title">Why people switch to AuraDock Pro</h2>
+        <p class="section-sub">Built for real desks and real routines — fewer drops, less cable clutter, and a screen that stays exactly where you need it.</p>
+        <div class="benefits">
+          <article class="benefit-card">
+            <div class="benefit-icon" aria-hidden="true">⚡</div>
+            <h3>Fast, fuss-free charging</h3>
+            <p>Strong magnetic hold keeps your phone aligned with your charger every time — no more waking up to a dead battery.</p>
+          </article>
+          <article class="benefit-card">
+            <div class="benefit-icon" aria-hidden="true">📐</div>
+            <h3>Ergonomic viewing angle</h3>
+            <p>Adjustable tilt reduces neck strain for video calls, recipes, and notifications at a glance.</p>
+          </article>
+          <article class="benefit-card">
+            <div class="benefit-icon" aria-hidden="true">🧱</div>
+            <h3>Weighted, anti-slip base</h3>
+            <p>Stays put when you tap the screen; soft pads protect your desk from scratches.</p>
+          </article>
+          <article class="benefit-card">
+            <div class="benefit-icon" aria-hidden="true">✓</div>
+            <h3>bdIntelligent quality</h3>
+            <p>Premium aluminum finish, rigorously tested hinges, and support that actually replies.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section order-section" id="order" aria-labelledby="order-heading">
+      <div class="wrap">
+        <h2 id="order-heading" class="section-title">Place your order</h2>
+        <p class="section-sub">Takes under a minute. We’ll call you to confirm delivery details.</p>
+        <div class="order-card">
+          <h2>AuraDock Pro</h2>
+          <p>৳2,450 · Cash on delivery</p>
+          <form id="order-form" novalidate>
+            <div class="form-group">
+              <label for="name">Full name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required placeholder="e.g. Rahman Ahmed" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone number</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" required placeholder="e.g. 01712 345678" />
+            </div>
+            <div class="form-group">
+              <label for="address">City &amp; address</label>
+              <textarea id="address" name="address" required placeholder="Area, road, house no. — we need this for delivery"></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary form-submit">Order Now — ৳2,450</button>
+            <p class="form-note">By ordering, you agree to receive a confirmation call from bdIntelligent.</p>
+          </form>
+          <div class="form-success" id="form-success" role="status">
+            Thanks — your request is received. We’ll contact you shortly to confirm.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reviews" aria-labelledby="reviews-heading">
+      <div class="wrap">
+        <h2 id="reviews-heading" class="section-title">What customers say</h2>
+        <p class="section-sub">Real feedback from buyers who use AuraDock Pro every day.</p>
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="review-head">
+              <div class="avatar" aria-hidden="true">NA</div>
+              <div class="review-meta">
+                <h4>Nadia Alam</h4>
+                <span>Dhaka · Verified buyer</span>
+              </div>
+            </div>
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>Finally a stand that doesn’t tip when I type. The magnet is strong but still easy to lift off. Worth it for WFH calls alone.</p>
+            <span class="review-verified">✓ Verified purchase</span>
+          </article>
+          <article class="review-card">
+            <div class="review-head">
+              <div class="avatar" aria-hidden="true">RK</div>
+              <div class="review-meta">
+                <h4>Rafiq Karim</h4>
+                <span>Chattogram · Verified buyer</span>
+              </div>
+            </div>
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>COD was smooth, product matches the photos. Aluminum feels solid — not flimsy plastic. My wife already ordered a second one.</p>
+            <span class="review-verified">✓ Verified purchase</span>
+          </article>
+          <article class="review-card">
+            <div class="review-head">
+              <div class="avatar" aria-hidden="true">SH</div>
+              <div class="review-meta">
+                <h4>Sabrina Hossain</h4>
+                <span>Sylhet · Verified buyer</span>
+              </div>
+            </div>
+            <div class="stars" aria-label="4 out of 5 stars">★★★★<span style="color: #e2e8f0">★</span></div>
+            <p>Love the tilt for cooking videos. Only wish I’d bought it sooner. Delivery took two days — very happy overall.</p>
+            <span class="review-verified">✓ Verified purchase</span>
+          </article>
+          <article class="review-card">
+            <div class="review-head">
+              <div class="avatar" aria-hidden="true">MI</div>
+              <div class="review-meta">
+                <h4>Imran Miah</h4>
+                <span>Dhaka · Verified buyer</span>
+              </div>
+            </div>
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>bdIntelligent support answered my compatibility question in minutes. Dock works great with my magnetic case.</p>
+            <span class="review-verified">✓ Verified purchase</span>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>&copy; <strong>bdIntelligent</strong> · Quality accessories for everyday life.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById("order-form");
+      var success = document.getElementById("form-success");
+      if (!form) return;
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        success.classList.add("is-visible");
+        form.reset();
+        success.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
+    })();
+  </script>
+</body>
+</html>
