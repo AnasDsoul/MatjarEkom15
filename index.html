@@ -19,6 +19,9 @@
       --accent: #c45c26;
       --accent-hover: #a34d20;
       --accent-soft: rgba(196, 92, 38, 0.12);
+      --wa: #25d366;
+      --wa-hover: #1da851;
+      --wa-shadow: rgba(37, 211, 102, 0.35);
       --line: rgba(26, 22, 20, 0.08);
       --star: #e3a008;
       --radius: 12px;
@@ -164,6 +167,100 @@
     }
     .btn-cta:active { transform: translateY(0); }
 
+    .cta-actions,
+    .form-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.65rem;
+      width: 100%;
+      max-width: 320px;
+      margin-inline: auto;
+    }
+    .form-actions {
+      max-width: none;
+      margin-top: 0.25rem;
+    }
+    @media (min-width: 400px) {
+      .cta-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 100%;
+      }
+      .cta-actions .btn-cta,
+      .cta-actions .btn-wa {
+        flex: 1 1 200px;
+        max-width: 280px;
+      }
+      .form-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.65rem;
+      }
+      .form-actions .btn-cta,
+      .form-actions .btn-wa {
+        flex: 1 1 calc(50% - 0.35rem);
+        min-width: min(100%, 168px);
+      }
+    }
+    @media (max-width: 399px) {
+      .form-actions .btn-cta,
+      .form-actions .btn-wa {
+        width: 100%;
+      }
+    }
+
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.25rem;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.25;
+      color: #fff;
+      background: linear-gradient(180deg, var(--wa) 0%, #20bd5a 100%);
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 18px var(--wa-shadow);
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      min-height: 48px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    html[lang="ar"] .btn-wa {
+      font-family: var(--font-ar);
+    }
+    .btn-wa:hover {
+      background: linear-gradient(180deg, var(--wa-hover) 0%, #199c4a 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 22px var(--wa-shadow);
+    }
+    .btn-wa:active {
+      transform: translateY(0);
+    }
+    .btn-wa:focus-visible {
+      outline: 2px solid var(--wa);
+      outline-offset: 3px;
+    }
+    .btn-wa svg {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+    }
+
+    .cta-actions .btn-cta,
+    .cta-actions .btn-wa,
+    .form-actions .btn-cta,
+    .form-actions .btn-wa {
+      min-height: 48px;
+    }
+
     /* Section shell */
     .section {
       padding: clamp(2rem, 5vw, 3.5rem) 0;
@@ -171,6 +268,37 @@
     .section--alt {
       background: var(--surface);
       border-block: 1px solid var(--line);
+    }
+
+    /* Welcome */
+    .welcome-block {
+      text-align: center;
+      padding: clamp(1.25rem, 4vw, 2rem) 0 clamp(0.25rem, 2vw, 0.75rem);
+      margin-bottom: clamp(0.5rem, 2vw, 1rem);
+    }
+    .welcome-block .welcome-kicker {
+      margin: 0 0 0.35rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold-dark);
+    }
+    html[lang="ar"] .welcome-block .welcome-kicker {
+      letter-spacing: 0.05em;
+    }
+    .welcome-block h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(1.65rem, 4.5vw, 2.35rem);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+    }
+    html[lang="ar"] .welcome-block h1 {
+      font-family: var(--font-ar);
+      font-weight: 700;
     }
 
     /* —— 1. Product —— */
@@ -186,35 +314,186 @@
       }
     }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.45rem;
+    /* PDP gallery — LTR for consistent slide math in RTL pages */
+    .pdp-gallery {
+      direction: ltr;
+      border-radius: calc(var(--radius) + 4px);
+      overflow: visible;
     }
-    .gallery__hero {
-      grid-column: 1 / -1;
-      aspect-ratio: 4 / 3;
+    .pdp-gallery__stage {
+      position: relative;
+      background: #ece8e2;
       border-radius: var(--radius);
-      overflow: hidden;
-      background: #ece8e2;
       box-shadow: var(--shadow);
-    }
-    .gallery__hero img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .gallery__cell {
-      aspect-ratio: 1;
-      border-radius: calc(var(--radius) - 2px);
       overflow: hidden;
-      background: #ece8e2;
-      box-shadow: 0 4px 16px rgba(26, 22, 20, 0.05);
     }
-    .gallery__cell img {
+    .pdp-gallery__viewport {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      touch-action: pan-y pinch-zoom;
+    }
+    .pdp-gallery__track {
+      --slide-i: 0;
+      display: flex;
+      width: 500%;
+      height: 100%;
+      transform: translateX(calc(var(--slide-i) * -20%));
+      transition: transform 0.55s cubic-bezier(0.33, 1, 0.68, 1);
+      will-change: transform;
+    }
+    .pdp-gallery__slide {
+      width: 20%;
+      flex-shrink: 0;
+      height: 100%;
+      background: #e8e4de;
+    }
+    .pdp-gallery__slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+    .pdp-gallery__nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--ink);
+      font-size: 1.35rem;
+      line-height: 1;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 4px 20px rgba(26, 22, 20, 0.12);
+      transition: background 0.2s, transform 0.15s, opacity 0.2s;
+    }
+    .pdp-gallery__nav:hover {
+      background: #fff;
+      transform: translateY(-50%) scale(1.05);
+    }
+    .pdp-gallery__nav:active {
+      transform: translateY(-50%) scale(0.98);
+    }
+    .pdp-gallery__nav:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      transform: translateY(-50%);
+    }
+    .pdp-gallery__nav:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .pdp-gallery__nav--prev { left: 10px; }
+    .pdp-gallery__nav--next { right: 10px; }
+    .pdp-gallery__nav span {
+      display: block;
+      margin-top: -2px;
+    }
+
+    .pdp-gallery__dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 8px 4px;
+    }
+    .pdp-gallery__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: none;
+      padding: 0;
+      background: rgba(26, 22, 20, 0.2);
+      cursor: pointer;
+      transition: transform 0.25s, background 0.25s, width 0.25s;
+    }
+    .pdp-gallery__dot[aria-current="true"] {
+      background: var(--accent);
+      transform: scale(1.15);
+      width: 22px;
+      border-radius: 999px;
+    }
+    .pdp-gallery__dot:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .pdp-gallery__thumbs-wrap {
+      margin-top: 10px;
+      position: relative;
+    }
+    .pdp-gallery__thumbs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 2px 10px;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+    }
+    .pdp-gallery__thumbs::-webkit-scrollbar {
+      height: 5px;
+    }
+    .pdp-gallery__thumbs::-webkit-scrollbar-thumb {
+      background: rgba(26, 22, 20, 0.2);
+      border-radius: 999px;
+    }
+    .pdp-gallery__thumb {
+      flex: 0 0 22%;
+      min-width: 72px;
+      max-width: 96px;
+      aspect-ratio: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      padding: 0;
+      cursor: pointer;
+      scroll-snap-align: start;
+      background: #ece8e2;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.2s;
+    }
+    .pdp-gallery__thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .pdp-gallery__thumb:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(26, 22, 20, 0.1);
+    }
+    .pdp-gallery__thumb.is-active {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(196, 92, 38, 0.25);
+    }
+    .pdp-gallery__thumb:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .pdp-gallery__hint {
+      margin: 0;
+      padding: 0 4px 2px;
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .pdp-gallery__track {
+        transition-duration: 0.01ms;
+      }
+      .pdp-gallery__thumbs {
+        scroll-behavior: auto;
+      }
+      .btn-wa:hover,
+      .btn-cta:hover {
+        transform: none;
+      }
     }
 
     .product-copy {
@@ -237,7 +516,7 @@
       letter-spacing: 0.06em;
     }
 
-    .product-copy h1 {
+    .product-copy h2 {
       margin: 0 0 0.75rem;
       font-size: clamp(1.85rem, 4.2vw, 2.65rem);
       line-height: 1.15;
@@ -289,9 +568,11 @@
     }
 
     .product-footnote {
-      margin: 1rem 0 0;
+      margin: 1rem auto 0;
       font-size: 0.82rem;
       color: var(--muted);
+      text-align: center;
+      max-width: 34ch;
     }
 
     /* —— 2. Order —— */
@@ -350,13 +631,13 @@
       resize: vertical;
     }
 
-    .order-card .btn-cta {
-      width: 100%;
-      margin-top: 0.25rem;
-      padding: 0.95rem;
+    .order-card .form-actions .btn-cta {
+      margin-top: 0;
+      padding: 0.95rem 1rem;
       font-size: 1rem;
       border: none;
       cursor: pointer;
+      text-align: center;
     }
 
     .form-note {
@@ -477,82 +758,126 @@
 
   <main>
     <!-- Section 1: Product + price -->
-    <section class="section" id="product" aria-labelledby="product-title">
+    <section class="section" id="product" aria-labelledby="welcome-headline">
+      <div class="wrap welcome-block">
+        <p class="welcome-kicker" data-i18n="welcomeKicker">Bijoux &amp; accessoires</p>
+        <h1 id="welcome-headline" data-i18n="welcomeHeadline">Welcome to MatjarEkom</h1>
+      </div>
       <div class="wrap product-grid">
-        <div class="gallery" aria-label="Product gallery">
-          <div class="gallery__hero">
-            <img
-              src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1200&q=82&auto=format&fit=crop"
-              alt=""
-              width="1200"
-              height="900"
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-              data-alt-fr="Bracelet Nour — vue portée, poignet"
-              data-alt-ar="سوار نور — لقطة على المعصم"
-            />
+        <div
+          class="pdp-gallery"
+          id="pdp-gallery"
+          role="region"
+          aria-roledescription="carousel"
+          data-i18n-aria-label="galleryAria"
+          aria-label="Galerie produit"
+        >
+          <div class="pdp-gallery__stage">
+            <button type="button" class="pdp-gallery__nav pdp-gallery__nav--prev" id="gallery-prev" aria-controls="gallery-track" data-i18n-aria="galleryPrev">
+              <span aria-hidden="true">‹</span>
+            </button>
+            <button type="button" class="pdp-gallery__nav pdp-gallery__nav--next" id="gallery-next" aria-controls="gallery-track" data-i18n-aria="galleryNext">
+              <span aria-hidden="true">›</span>
+            </button>
+            <div class="pdp-gallery__viewport">
+              <div class="pdp-gallery__track" id="gallery-track">
+                <div class="pdp-gallery__slide">
+                  <img
+                    src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1200&q=82&auto=format&fit=crop"
+                    alt=""
+                    width="1200"
+                    height="900"
+                    loading="eager"
+                    fetchpriority="high"
+                    decoding="async"
+                    data-alt-fr="Bracelet Nour — vue portée, poignet"
+                    data-alt-ar="سوار نور — لقطة على المعصم"
+                  />
+                </div>
+                <div class="pdp-gallery__slide">
+                  <img
+                    src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=82&auto=format&fit=crop"
+                    alt=""
+                    width="800"
+                    height="800"
+                    loading="lazy"
+                    decoding="async"
+                    data-alt-fr="Gros plan — détails du chaînon et du fermoir"
+                    data-alt-ar="لقطة قريبة — حلقات السوار والإغلاق"
+                  />
+                </div>
+                <div class="pdp-gallery__slide">
+                  <img
+                    src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=82&auto=format&fit=crop"
+                    alt=""
+                    width="800"
+                    height="800"
+                    loading="lazy"
+                    decoding="async"
+                    data-alt-fr="Style de vie — bracelet au quotidien"
+                    data-alt-ar="لقطة حياتية — السوار في اليوم العادي"
+                  />
+                </div>
+                <div class="pdp-gallery__slide">
+                  <img
+                    src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=82&auto=format&fit=crop"
+                    alt=""
+                    width="800"
+                    height="800"
+                    loading="lazy"
+                    decoding="async"
+                    data-alt-fr="Plateau — finition dorée et reflets"
+                    data-alt-ar="عرض مسطح — اللمسة الذهبية والانعكاس"
+                  />
+                </div>
+                <div class="pdp-gallery__slide">
+                  <img
+                    src="https://images.unsplash.com/photo-1522312346374-d1a52e2b99ab?w=800&q=82&auto=format&fit=crop"
+                    alt=""
+                    width="800"
+                    height="800"
+                    loading="lazy"
+                    decoding="async"
+                    data-alt-fr="Lifestyle — élégance discrète"
+                    data-alt-ar="أناقة بسيطة في الإطلالة"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="pdp-gallery__dots" id="gallery-dots" role="group" aria-label="Indicateurs"></div>
           </div>
-          <div class="gallery__cell">
-            <img
-              src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=82&auto=format&fit=crop"
-              alt=""
-              width="800"
-              height="800"
-              loading="lazy"
-              decoding="async"
-              data-alt-fr="Gros plan — détails du chaînon et du fermoir"
-              data-alt-ar="لقطة قريبة — حلقات السوار والإغلاق"
-            />
-          </div>
-          <div class="gallery__cell">
-            <img
-              src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=82&auto=format&fit=crop"
-              alt=""
-              width="800"
-              height="800"
-              loading="lazy"
-              decoding="async"
-              data-alt-fr="Style de vie — bracelet au quotidien"
-              data-alt-ar="لقطة حياتية — السوار في اليوم العادي"
-            />
-          </div>
-          <div class="gallery__cell">
-            <img
-              src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=82&auto=format&fit=crop"
-              alt=""
-              width="800"
-              height="800"
-              loading="lazy"
-              decoding="async"
-              data-alt-fr="Plateau — finition dorée et reflets"
-              data-alt-ar="عرض مسطح — اللمسة الذهبية والانعكاس"
-            />
-          </div>
-          <div class="gallery__cell">
-            <img
-              src="https://images.unsplash.com/photo-1522312346374-d1a52e2b99ab?w=800&q=82&auto=format&fit=crop"
-              alt=""
-              width="800"
-              height="800"
-              loading="lazy"
-              decoding="async"
-              data-alt-fr="Lifestyle — élégance discrète"
-              data-alt-ar="أناقة بسيطة في الإطلالة"
-            />
+          <div class="pdp-gallery__thumbs-wrap">
+            <div class="pdp-gallery__thumbs" id="gallery-thumbs"></div>
+            <p class="pdp-gallery__hint" data-i18n="galleryHint">Faites défiler les miniatures ou utilisez les flèches.</p>
           </div>
         </div>
 
         <div class="product-copy">
           <p class="eyebrow" data-i18n="eyebrow">Nouvelle collection</p>
-          <h1 id="product-title" class="display-font" data-i18n="productName">Bracelet « Nour » — plaqué or</h1>
+          <h2 id="product-title" class="display-font" data-i18n="productName">Bracelet « Nour » — plaqué or</h2>
           <p class="lede" data-i18n="lede">Élégance discrète, finition miroir. Léger au poignet, pensé pour se porter tous les jours.</p>
           <div class="price-row">
             <span class="price-current" data-i18n="price">349 DH</span>
             <span class="price-was" data-i18n="priceWas">499 DH</span>
             <span class="price-badge" data-i18n="priceBadge">−30%</span>
           </div>
-          <a href="#order" class="btn-cta" data-i18n="orderNowFull">Commander — 349 DH</a>
+          <div class="cta-actions">
+            <a href="#order" class="btn-cta" data-i18n="orderNowFull">Commander — 349 DH</a>
+            <a
+              class="btn-wa"
+              data-wa-link="static"
+              href="https://wa.me/212600000000"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n-aria="waBtnAria"
+              aria-label="Commander sur WhatsApp"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.883 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
+              <span data-i18n="orderWhatsApp">Commander sur WhatsApp</span>
+            </a>
+          </div>
           <p class="product-footnote" data-i18n="footnote">Paiement à la livraison · Emballage cadeau offert</p>
         </div>
       </div>
@@ -577,7 +902,23 @@
               <label for="cust-addr" data-i18n="labelAddress">Ville et adresse</label>
               <textarea id="cust-addr" name="address" required></textarea>
             </div>
-            <button type="submit" class="btn-cta" data-i18n="submitBtn">Commander — 349 DH</button>
+            <div class="form-actions">
+              <button type="submit" class="btn-cta" data-i18n="submitBtn">Commander — 349 DH</button>
+              <a
+                class="btn-wa"
+                data-wa-link="form"
+                href="https://wa.me/212600000000"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-i18n-aria="waBtnAria"
+                aria-label="Commander sur WhatsApp"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.883 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                <span data-i18n="orderWhatsApp">Commander sur WhatsApp</span>
+              </a>
+            </div>
             <p class="form-note" data-i18n="formNote">En commandant, vous acceptez d’être contacté par MatjarEkom pour confirmer la livraison.</p>
           </form>
           <div class="form-success" id="form-success" role="status" data-i18n="formSuccess">
@@ -654,6 +995,13 @@
     (function () {
       var STR = {
         fr: {
+          welcomeKicker: "Bijoux & accessoires",
+          welcomeHeadline: "Welcome to MatjarEkom",
+          galleryAria: "Galerie produit — feuilletez les photos",
+          galleryPrev: "Photo précédente",
+          galleryNext: "Photo suivante",
+          galleryHint: "Faites défiler les miniatures ou utilisez les flèches.",
+          galleryDotsAria: "Indicateurs de photos",
           orderNow: "Commander",
           orderNowFull: "Commander — 349 DH",
           eyebrow: "Nouvelle collection",
@@ -669,6 +1017,13 @@
           labelPhone: "Téléphone",
           labelAddress: "Ville et adresse",
           submitBtn: "Commander — 349 DH",
+          orderWhatsApp: "Commander sur WhatsApp",
+          waBtnAria: "Ouvrir WhatsApp pour commander le bracelet Nour",
+          waPrefill:
+            "Bonjour MatjarEkom, je souhaite commander le bracelet « Nour » à 349 DH. Merci de me confirmer la disponibilité et la livraison.",
+          waLineName: "Nom",
+          waLinePhone: "Téléphone",
+          waLineAddr: "Adresse",
           formNote: "En commandant, vous acceptez d’être contacté par MatjarEkom pour confirmer la livraison.",
           formSuccess: "Merci — votre demande est bien reçue. Nous vous appelons bientôt.",
           reviewsTitle: "Avis clients",
@@ -688,6 +1043,13 @@
           footer: "© MatjarEkom — bijoux et accessoires sélectionnés."
         },
         ar: {
+          welcomeKicker: "مجوهرات وإكسسوارات",
+          welcomeHeadline: "مرحبًا بك في MatjarEkom",
+          galleryAria: "معرض الصور — تصفّح الصور",
+          galleryPrev: "الصورة السابقة",
+          galleryNext: "الصورة التالية",
+          galleryHint: "مرّر المصغّرات أو استخدم الأسهم.",
+          galleryDotsAria: "مؤشرات الصور",
           orderNow: "اطلب الآن",
           orderNowFull: "اطلب الآن — 349 درهم",
           eyebrow: "تشكيلة جديدة",
@@ -723,9 +1085,23 @@
         }
       };
 
+      var WA_PHONE = "212600000000";
+
       var html = document.documentElement;
       var btnFr = document.getElementById("lang-fr");
       var btnAr = document.getElementById("lang-ar");
+
+      function waUrl(text) {
+        return "https://wa.me/" + WA_PHONE + "?text=" + encodeURIComponent(text);
+      }
+
+      function updateWaStaticLinks(lang) {
+        var t = STR[lang];
+        if (!t || !t.waPrefill) return;
+        document.querySelectorAll('a[data-wa-link="static"]').forEach(function (a) {
+          a.href = waUrl(t.waPrefill);
+        });
+      }
 
       function setLang(lang) {
         var t = STR[lang];
@@ -736,6 +1112,17 @@
           var key = el.getAttribute("data-i18n");
           if (t[key]) el.textContent = t[key];
         });
+        document.querySelectorAll("[data-i18n-aria-label]").forEach(function (el) {
+          var key = el.getAttribute("data-i18n-aria-label");
+          if (t[key]) el.setAttribute("aria-label", t[key]);
+        });
+        document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+          var key = el.getAttribute("data-i18n-aria");
+          if (t[key]) el.setAttribute("aria-label", t[key]);
+        });
+        if (typeof window.__matjarGalleryRefreshI18n === "function") {
+          window.__matjarGalleryRefreshI18n(lang);
+        }
         btnFr.setAttribute("aria-pressed", lang === "fr" ? "true" : "false");
         btnAr.setAttribute("aria-pressed", lang === "ar" ? "true" : "false");
         document.title = lang === "ar" ? "MatjarEkom — سوار نور" : "MatjarEkom — Bracelet Nour";
@@ -753,7 +1140,26 @@
       try {
         var saved = localStorage.getItem("matjar-lang");
         if (saved === "ar" || saved === "fr") setLang(saved);
-      } catch (e) {}
+        else updateWaStaticLinks("fr");
+      } catch (e) {
+        updateWaStaticLinks("fr");
+      }
+
+      var waForm = document.querySelector('a[data-wa-link="form"]');
+      if (waForm) {
+        waForm.addEventListener("click", function () {
+          var L = html.getAttribute("lang") || "fr";
+          var t = STR[L] || STR.fr;
+          var lines = [t.waPrefill];
+          var n = document.getElementById("cust-name");
+          var p = document.getElementById("cust-phone");
+          var addr = document.getElementById("cust-addr");
+          if (n && n.value.trim()) lines.push(t.waLineName + " : " + n.value.trim());
+          if (p && p.value.trim()) lines.push(t.waLinePhone + " : " + p.value.trim());
+          if (addr && addr.value.trim()) lines.push(t.waLineAddr + " : " + addr.value.trim());
+          waForm.href = waUrl(lines.join("\n\n"));
+        });
+      }
 
       var form = document.getElementById("order-form");
       var ok = document.getElementById("form-success");
@@ -769,6 +1175,146 @@
           ok.scrollIntoView({ behavior: "smooth", block: "nearest" });
         });
       }
+
+      (function initGallery() {
+        var root = document.getElementById("pdp-gallery");
+        var track = document.getElementById("gallery-track");
+        var dotsEl = document.getElementById("gallery-dots");
+        var thumbsEl = document.getElementById("gallery-thumbs");
+        var btnPrev = document.getElementById("gallery-prev");
+        var btnNext = document.getElementById("gallery-next");
+        if (!root || !track || !dotsEl || !thumbsEl || !btnPrev || !btnNext) return;
+
+        var viewport = root.querySelector(".pdp-gallery__viewport");
+        var slides = track.querySelectorAll(".pdp-gallery__slide");
+        var n = slides.length;
+        if (!n || !viewport) return;
+
+        var idx = 0;
+        var dotButtons = [];
+        var thumbButtons = [];
+
+        function langNow() {
+          return document.documentElement.getAttribute("lang") || "fr";
+        }
+
+        function slideAria(i) {
+          var L = langNow();
+          if (L === "ar") return "صورة " + (i + 1) + " من " + n;
+          return "Photo " + (i + 1) + " sur " + n;
+        }
+
+        function sync() {
+          track.style.setProperty("--slide-i", String(idx));
+          dotButtons.forEach(function (d, i) {
+            d.setAttribute("aria-current", i === idx ? "true" : "false");
+          });
+          thumbButtons.forEach(function (th, i) {
+            th.classList.toggle("is-active", i === idx);
+          });
+          btnPrev.disabled = idx <= 0;
+          btnNext.disabled = idx >= n - 1;
+        }
+
+        function go(i) {
+          idx = Math.max(0, Math.min(n - 1, i));
+          sync();
+          var th = thumbButtons[idx];
+          if (th) {
+            th.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+          }
+        }
+
+        function buildDotsThumbs() {
+          dotsEl.innerHTML = "";
+          thumbsEl.innerHTML = "";
+          dotButtons = [];
+          thumbButtons = [];
+          var L = langNow();
+          for (var i = 0; i < n; i++) {
+            (function (j) {
+              var dot = document.createElement("button");
+              dot.type = "button";
+              dot.className = "pdp-gallery__dot";
+              dot.setAttribute("aria-label", slideAria(j));
+              dot.addEventListener("click", function () {
+                go(j);
+              });
+              dotsEl.appendChild(dot);
+              dotButtons.push(dot);
+
+              var thumb = document.createElement("button");
+              thumb.type = "button";
+              thumb.className = "pdp-gallery__thumb";
+              thumb.setAttribute("aria-label", slideAria(j));
+              var srcImg = slides[j].querySelector("img");
+              if (srcImg) {
+                var ti = document.createElement("img");
+                ti.src = srcImg.src;
+                ti.alt = "";
+                ti.loading = j === 0 ? "eager" : "lazy";
+                ti.decoding = "async";
+                thumb.appendChild(ti);
+              }
+              thumb.addEventListener("click", function () {
+                go(j);
+              });
+              thumbsEl.appendChild(thumb);
+              thumbButtons.push(thumb);
+            })(i);
+          }
+          sync();
+        }
+
+        window.__matjarGalleryRefreshI18n = function () {
+          for (var i = 0; i < n; i++) {
+            var lab = slideAria(i);
+            if (dotButtons[i]) dotButtons[i].setAttribute("aria-label", lab);
+            if (thumbButtons[i]) thumbButtons[i].setAttribute("aria-label", lab);
+          }
+        };
+
+        btnPrev.addEventListener("click", function () {
+          go(idx - 1);
+        });
+        btnNext.addEventListener("click", function () {
+          go(idx + 1);
+        });
+
+        viewport.setAttribute("tabindex", "0");
+        viewport.setAttribute("role", "group");
+        viewport.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            go(idx - 1);
+          }
+          if (e.key === "ArrowRight") {
+            e.preventDefault();
+            go(idx + 1);
+          }
+        });
+
+        var touchX = 0;
+        viewport.addEventListener(
+          "touchstart",
+          function (e) {
+            touchX = e.changedTouches[0].screenX;
+          },
+          { passive: true }
+        );
+        viewport.addEventListener(
+          "touchend",
+          function (e) {
+            var dx = e.changedTouches[0].screenX - touchX;
+            if (Math.abs(dx) < 42) return;
+            if (dx > 0) go(idx - 1);
+            else go(idx + 1);
+          },
+          { passive: true }
+        );
+
+        buildDotsThumbs();
+      })();
     })();
   </script>
 </body>
