@@ -144,31 +144,7 @@
       outline-offset: 2px;
     }
 
-    .btn-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.65rem 1.2rem;
-      font-family: inherit;
-      font-weight: 700;
-      font-size: 0.88rem;
-      color: #fff;
-      background: var(--accent);
-      border-radius: 999px;
-      transition: background 0.2s, transform 0.15s;
-      box-shadow: 0 4px 16px rgba(196, 92, 38, 0.28);
-    }
-    html[lang="ar"] .btn-cta {
-      font-family: var(--font-ar);
-    }
-    .btn-cta:hover {
-      background: var(--accent-hover);
-      transform: translateY(-1px);
-    }
-    .btn-cta:active { transform: translateY(0); }
-
-    .cta-actions,
-    .form-actions {
+    .cta-actions {
       display: flex;
       flex-direction: column;
       align-items: stretch;
@@ -177,41 +153,23 @@
       max-width: 320px;
       margin-inline: auto;
     }
-    .form-actions {
-      max-width: none;
-      margin-top: 0.25rem;
-    }
     @media (min-width: 400px) {
       .cta-actions {
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: flex-start;
         max-width: 100%;
       }
-      .cta-actions .btn-cta,
       .cta-actions .btn-wa {
-        flex: 1 1 200px;
-        max-width: 280px;
-      }
-      .form-actions {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.65rem;
-      }
-      .form-actions .btn-cta,
-      .form-actions .btn-wa {
-        flex: 1 1 calc(50% - 0.35rem);
-        min-width: min(100%, 168px);
-      }
-    }
-    @media (max-width: 399px) {
-      .form-actions .btn-cta,
-      .form-actions .btn-wa {
-        width: 100%;
+        flex: 0 1 auto;
+        max-width: 320px;
       }
     }
 
+    @keyframes wa-gentle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
     .btn-wa {
       display: inline-flex;
       align-items: center;
@@ -229,20 +187,17 @@
       cursor: pointer;
       text-decoration: none;
       box-shadow: 0 4px 18px var(--wa-shadow);
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      transition: background 0.2s, box-shadow 0.2s;
       min-height: 48px;
       -webkit-tap-highlight-color: transparent;
+      animation: wa-gentle 2.8s ease-in-out infinite;
     }
     html[lang="ar"] .btn-wa {
       font-family: var(--font-ar);
     }
     .btn-wa:hover {
       background: linear-gradient(180deg, var(--wa-hover) 0%, #199c4a 100%);
-      transform: translateY(-1px);
       box-shadow: 0 6px 22px var(--wa-shadow);
-    }
-    .btn-wa:active {
-      transform: translateY(0);
     }
     .btn-wa:focus-visible {
       outline: 2px solid var(--wa);
@@ -254,11 +209,17 @@
       height: 22px;
     }
 
-    .cta-actions .btn-cta,
     .cta-actions .btn-wa,
-    .form-actions .btn-cta,
-    .form-actions .btn-wa {
+    .header-actions .btn-wa {
       min-height: 48px;
+    }
+    .header-actions .btn-wa {
+      padding: 0.65rem 1.1rem;
+      font-size: 0.88rem;
+    }
+    .header-actions .btn-wa svg {
+      width: 18px;
+      height: 18px;
     }
 
     /* Section shell */
@@ -490,9 +451,8 @@
       .pdp-gallery__thumbs {
         scroll-behavior: auto;
       }
-      .btn-wa:hover,
-      .btn-cta:hover {
-        transform: none;
+      .btn-wa {
+        animation: none;
       }
     }
 
@@ -560,11 +520,30 @@
       border-radius: 6px;
     }
 
-    .product-copy .btn-cta {
-      padding: 0.9rem 1.6rem;
-      font-size: 1rem;
-      width: 100%;
-      max-width: 280px;
+    .price-perks {
+      list-style: none;
+      margin: 0 0 1.25rem;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+    .price-perks li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.4;
+    }
+    .price-perks li::before {
+      content: "";
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      margin-top: 0.45em;
+      border-radius: 50%;
+      background: var(--gold);
     }
 
     .product-footnote {
@@ -575,93 +554,7 @@
       max-width: 34ch;
     }
 
-    /* —— 2. Order —— */
-    .order-card {
-      max-width: 440px;
-      margin-inline: auto;
-      padding: clamp(1.35rem, 4vw, 2rem);
-      background: var(--bg);
-      border-radius: calc(var(--radius) + 4px);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-    }
-    .order-card h2 {
-      margin: 0 0 0.35rem;
-      font-size: 1.35rem;
-      text-align: center;
-    }
-    .order-card > .sub {
-      margin: 0 0 1.35rem;
-      text-align: center;
-      font-size: 0.92rem;
-      color: var(--muted);
-    }
-
-    .field { margin-bottom: 1rem; }
-    .field label {
-      display: block;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 0.35rem;
-    }
-    .field input,
-    .field textarea {
-      width: 100%;
-      padding: 0.8rem 0.95rem;
-      font-family: inherit;
-      font-size: 1rem;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: var(--surface);
-      transition: border-color 0.15s, box-shadow 0.15s;
-    }
-    html[lang="ar"] .field input,
-    html[lang="ar"] .field textarea {
-      font-family: var(--font-ar);
-    }
-    .field input:focus,
-    .field textarea:focus {
-      outline: none;
-      border-color: rgba(196, 92, 38, 0.45);
-      box-shadow: 0 0 0 3px var(--accent-soft);
-    }
-    .field textarea {
-      min-height: 88px;
-      resize: vertical;
-    }
-
-    .order-card .form-actions .btn-cta {
-      margin-top: 0;
-      padding: 0.95rem 1rem;
-      font-size: 1rem;
-      border: none;
-      cursor: pointer;
-      text-align: center;
-    }
-
-    .form-note {
-      margin: 0.85rem 0 0;
-      font-size: 0.75rem;
-      color: var(--muted);
-      text-align: center;
-      line-height: 1.45;
-    }
-
-    .form-success {
-      display: none;
-      margin-top: 1rem;
-      padding: 1rem;
-      text-align: center;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #166534;
-      background: #ecfdf3;
-      border-radius: 10px;
-    }
-    .form-success.is-on { display: block; }
-
-    /* —— 3. Reviews —— */
+    /* —— 2. Reviews —— */
     .reviews-head {
       text-align: center;
       margin-bottom: clamp(1.25rem, 3vw, 2rem);
@@ -751,7 +644,20 @@
           <button type="button" id="lang-fr" aria-pressed="true" data-set-lang="fr">FR</button>
           <button type="button" id="lang-ar" aria-pressed="false" data-set-lang="ar">العربية</button>
         </div>
-        <a href="#order" class="btn-cta" data-i18n="orderNow">Commander</a>
+        <a
+          class="btn-wa"
+          data-wa-link="static"
+          href="https://wa.me/212600000000"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-i18n-aria="waBtnAria"
+          aria-label="Commander sur WhatsApp"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.883 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+          <span data-i18n="orderWhatsApp">Commander sur WhatsApp</span>
+        </a>
       </div>
     </div>
   </header>
@@ -783,7 +689,7 @@
               <div class="pdp-gallery__track" id="gallery-track">
                 <div class="pdp-gallery__slide">
                   <img
-                    src="C:\Users\Anas\Desktop\TestSite\60721e30-b6fc-4ac9-b2ad-45997d3c097f.jpg"
+                    src="60721e30-b6fc-4ac9-b2ad-45997d3c097f.jpg"
                     alt=""
                     width="1200"
                     height="900"
@@ -796,7 +702,7 @@
                 </div>
                 <div class="pdp-gallery__slide">
                   <img
-                    src="C:\Users\Anas\Desktop\TestSite\295e741a-fdbd-4f76-87f3-5584ea04a342.jpg"
+                    src="295e741a-fdbd-4f76-87f3-5584ea04a342.jpg"
                     alt=""
                     width="800"
                     height="800"
@@ -808,7 +714,7 @@
                 </div>
                 <div class="pdp-gallery__slide">
                   <img
-                    src="C:\Users\Anas\Desktop\TestSite\a070626d-b8fc-43fd-85fd-b8d57b5e1644.jpg"
+                    src="a070626d-b8fc-43fd-85fd-b8d57b5e1644.jpg"
                     alt=""
                     width="800"
                     height="800"
@@ -820,7 +726,7 @@
                 </div>
                 <div class="pdp-gallery__slide">
                   <img
-                    src="C:\Users\Anas\Desktop\TestSite\b5fbbf38-4aed-499d-a16e-873f3e784e12.jpg"
+                    src="b5fbbf38-4aed-499d-a16e-873f3e784e12.jpg"
                     alt=""
                     width="800"
                     height="800"
@@ -861,8 +767,12 @@
             <span class="price-was" data-i18n="priceWas">499 DH</span>
             <span class="price-badge" data-i18n="priceBadge">−30%</span>
           </div>
+          <ul class="price-perks">
+            <li data-i18n="perkFreeShip">Livraison gratuite</li>
+            <li data-i18n="perkCod">Paiement à la livraison</li>
+            <li data-i18n="perkSupport">Support 7/7</li>
+          </ul>
           <div class="cta-actions">
-            <a href="#order" class="btn-cta" data-i18n="orderNowFull">Commander — 349 DH</a>
             <a
               class="btn-wa"
               data-wa-link="static"
@@ -878,57 +788,12 @@
               <span data-i18n="orderWhatsApp">Commander sur WhatsApp</span>
             </a>
           </div>
-          <p class="product-footnote" data-i18n="footnote">Paiement à la livraison · Emballage cadeau offert</p>
+          <p class="product-footnote" data-i18n="footnote">Emballage cadeau offert</p>
         </div>
       </div>
     </section>
 
-    <!-- Section 2: Order form -->
-    <section class="section section--alt" id="order" aria-labelledby="order-title">
-      <div class="wrap">
-        <div class="order-card">
-          <h2 id="order-title" class="display-font" data-i18n="formTitle">Votre commande</h2>
-          <p class="sub" data-i18n="formSub">Un formulaire simple — nous vous rappelons sous 24 h.</p>
-          <form id="order-form" novalidate>
-            <div class="field">
-              <label for="cust-name" data-i18n="labelName">Nom complet</label>
-              <input type="text" id="cust-name" name="name" autocomplete="name" required />
-            </div>
-            <div class="field">
-              <label for="cust-phone" data-i18n="labelPhone">Téléphone</label>
-              <input type="tel" id="cust-phone" name="phone" autocomplete="tel" required />
-            </div>
-            <div class="field">
-              <label for="cust-addr" data-i18n="labelAddress">Ville et adresse</label>
-              <textarea id="cust-addr" name="address" required></textarea>
-            </div>
-            <div class="form-actions">
-              <button type="submit" class="btn-cta" data-i18n="submitBtn">Commander — 349 DH</button>
-              <a
-                class="btn-wa"
-                data-wa-link="form"
-                href="https://wa.me/212600000000"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-i18n-aria="waBtnAria"
-                aria-label="Commander sur WhatsApp"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.883 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                </svg>
-                <span data-i18n="orderWhatsApp">Commander sur WhatsApp</span>
-              </a>
-            </div>
-            <p class="form-note" data-i18n="formNote">En commandant, vous acceptez d’être contacté par MatjarEkom pour confirmer la livraison.</p>
-          </form>
-          <div class="form-success" id="form-success" role="status" data-i18n="formSuccess">
-            Merci — votre demande est bien reçue. Nous vous appelons bientôt.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 3: Reviews -->
+    <!-- Section 2: Reviews -->
     <section class="section" id="reviews" aria-labelledby="reviews-title">
       <div class="wrap">
         <div class="reviews-head">
@@ -1002,30 +867,20 @@
           galleryNext: "Photo suivante",
           galleryHint: "Faites défiler les miniatures ou utilisez les flèches.",
           galleryDotsAria: "Indicateurs de photos",
-          orderNow: "Commander",
-          orderNowFull: "Commander — 349 DH",
           eyebrow: "Nouvelle collection",
           productName: "Bracelet « Nour » — plaqué or",
           lede: "Élégance discrète, finition miroir. Léger au poignet, pensé pour se porter tous les jours.",
           price: "349 DH",
           priceWas: "499 DH",
           priceBadge: "−30%",
-          footnote: "Paiement à la livraison · Emballage cadeau offert",
-          formTitle: "Votre commande",
-          formSub: "Un formulaire simple — nous vous rappelons sous 24 h.",
-          labelName: "Nom complet",
-          labelPhone: "Téléphone",
-          labelAddress: "Ville et adresse",
-          submitBtn: "Commander — 349 DH",
+          perkFreeShip: "Livraison gratuite",
+          perkCod: "Paiement à la livraison",
+          perkSupport: "Support 7/7",
+          footnote: "Emballage cadeau offert",
           orderWhatsApp: "Commander sur WhatsApp",
           waBtnAria: "Ouvrir WhatsApp pour commander le bracelet Nour",
           waPrefill:
             "Bonjour MatjarEkom, je souhaite commander le bracelet « Nour » à 349 DH. Merci de me confirmer la disponibilité et la livraison.",
-          waLineName: "Nom",
-          waLinePhone: "Téléphone",
-          waLineAddr: "Adresse",
-          formNote: "En commandant, vous acceptez d’être contacté par MatjarEkom pour confirmer la livraison.",
-          formSuccess: "Merci — votre demande est bien reçue. Nous vous appelons bientôt.",
           reviewsTitle: "Avis clients",
           reviewsSub: "Des retours authentiques sur le bracelet Nour.",
           r1name: "Salma M.",
@@ -1050,23 +905,20 @@
           galleryNext: "الصورة التالية",
           galleryHint: "مرّر المصغّرات أو استخدم الأسهم.",
           galleryDotsAria: "مؤشرات الصور",
-          orderNow: "اطلب الآن",
-          orderNowFull: "اطلب الآن — 349 درهم",
           eyebrow: "تشكيلة جديدة",
           productName: "سوار « نور » — مطلي بالذهب",
           lede: "أناقة هادئة ولمعان كالمرآة. خفيف على المعصم، مناسب لليوم كامل.",
           price: "349 درهم",
           priceWas: "499 درهم",
           priceBadge: "خصم 30٪",
-          footnote: "الدفع عند الاستلام · تغليف هدية مجاني",
-          formTitle: "طلبك",
-          formSub: "نموذج بسيط — نتصل بك خلال 24 ساعة.",
-          labelName: "الاسم الكامل",
-          labelPhone: "رقم الهاتف",
-          labelAddress: "المدينة والعنوان",
-          submitBtn: "اطلب الآن — 349 درهم",
-          formNote: "بإرسال الطلب، توافق على أن يتواصل معك فريق MatjarEkom لتأكيد التوصيل.",
-          formSuccess: "شكرًا — استلمنا طلبك. سنتصل بك قريبًا.",
+          perkFreeShip: "توصيل مجاني",
+          perkCod: "الدفع عند الاستلام",
+          perkSupport: "دعم 7/7",
+          footnote: "تغليف هدية مجاني",
+          orderWhatsApp: "اطلب عبر واتساب",
+          waBtnAria: "فتح واتساب لطلب سوار نور",
+          waPrefill:
+            "مرحبًا MatjarEkom، أرغب في طلب سوار « نور » بسعر 349 درهم. الرجاء تأكيد التوفر والتوصيل.",
           reviewsTitle: "آراء العملاء",
           reviewsSub: "تجارب حقيقية حول سوار نور.",
           r1name: "سلمى م.",
@@ -1132,6 +984,7 @@
         try {
           localStorage.setItem("matjar-lang", lang);
         } catch (e) {}
+        updateWaStaticLinks(lang);
       }
 
       btnFr.addEventListener("click", function () { setLang("fr"); });
@@ -1143,37 +996,6 @@
         else updateWaStaticLinks("fr");
       } catch (e) {
         updateWaStaticLinks("fr");
-      }
-
-      var waForm = document.querySelector('a[data-wa-link="form"]');
-      if (waForm) {
-        waForm.addEventListener("click", function () {
-          var L = html.getAttribute("lang") || "fr";
-          var t = STR[L] || STR.fr;
-          var lines = [t.waPrefill];
-          var n = document.getElementById("cust-name");
-          var p = document.getElementById("cust-phone");
-          var addr = document.getElementById("cust-addr");
-          if (n && n.value.trim()) lines.push(t.waLineName + " : " + n.value.trim());
-          if (p && p.value.trim()) lines.push(t.waLinePhone + " : " + p.value.trim());
-          if (addr && addr.value.trim()) lines.push(t.waLineAddr + " : " + addr.value.trim());
-          waForm.href = waUrl(lines.join("\n\n"));
-        });
-      }
-
-      var form = document.getElementById("order-form");
-      var ok = document.getElementById("form-success");
-      if (form) {
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-          if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
-          }
-          ok.classList.add("is-on");
-          form.reset();
-          ok.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        });
       }
 
       (function initGallery() {
