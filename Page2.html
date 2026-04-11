@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Matjar-Ekom — Bracelet Nour plaqué or. Commandez en ligne. Livraison rapide." />
-  <title>Matjar-Ekom — Bracelet Nour</title>
+  <meta name="description" content="MatjarEkom — Bracelet Nour plaqué or. Commandez en ligne. Livraison rapide." />
+  <title>MatjarEkom — Bracelet Nour</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Noto+Sans+Arabic:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -79,19 +79,12 @@
       padding: .75rem 0;
     }
     .logo {
-      display: inline-flex; align-items: center; gap: .55rem;
       font-family: var(--font-display);
-      font-size: clamp(1.2rem, 2.8vw, 1.55rem);
-      font-weight: 700;
-      color: var(--ink); letter-spacing: .03em;
-      max-width: min(100%, 22rem);
+      font-size: 1.35rem; font-weight: 700;
+      color: var(--ink); letter-spacing: .04em;
     }
-    html[lang="ar"] .logo { font-family: var(--font-ar); font-size: clamp(1.05rem, 2.5vw, 1.3rem); }
-    .logo .logo-accent { color: var(--gold-dark); font-weight: 600; }
-    .logo-img {
-      height: clamp(48px, 8vw, 58px); width: auto; max-width: min(200px, 42vw);
-      object-fit: contain; flex-shrink: 0;
-    }
+    html[lang="ar"] .logo { font-family: var(--font-ar); font-size: 1.15rem; }
+    .logo span { color: var(--gold-dark); font-weight: 600; }
 
     .header-actions { display: flex; align-items: center; gap: .65rem; flex-wrap: wrap; }
 
@@ -370,10 +363,7 @@
 
   <header class="header">
     <div class="wrap header-inner">
-      <a href="#" class="logo" dir="ltr" lang="fr" aria-label="Matjar-Ekom">
-        <img src="Gemini_Generated_Image_6xqhlt6xqhlt6xqh.png" alt="" class="logo-img" width="200" height="58" decoding="async" />
-        <span class="logo-text">Matjar-<span class="logo-accent">Ekom</span></span>
-      </a>
+      <a href="#" class="logo">Matjar<span>Ekom</span></a>
       <div class="header-actions">
         <div class="lang-toggle" role="group" aria-label="Language">
           <button type="button" id="lang-fr" aria-pressed="true"  data-set-lang="fr">FR</button>
@@ -397,7 +387,7 @@
     <section class="section" id="product" aria-labelledby="welcome-headline">
       <div class="wrap welcome-block">
         <p class="welcome-kicker" data-i18n="welcomeKicker">Bijoux &amp; accessoires</p>
-        <h1 id="welcome-headline" data-i18n="welcomeHeadline">Bienvenue sur Matjar-Ekom</h1>
+        <h1 id="welcome-headline" data-i18n="welcomeHeadline">Welcome to MatjarEkom</h1>
       </div>
 
       <div class="wrap product-grid">
@@ -471,7 +461,7 @@
 
   <footer class="footer">
     <div class="wrap">
-      <p data-i18n="footer">© Matjar-Ekom — bijoux et accessoires sélectionnés.</p>
+      <p data-i18n="footer">© MatjarEkom — bijoux et accessoires sélectionnés.</p>
     </div>
   </footer>
 
@@ -572,8 +562,8 @@
       stars: 5,
       nameFr: "Amine H.",       nameAr: "أمين ح.",
       locFr:  "Marrakech",      locAr:  "مراكش",
-      textFr: "Photo fidèle au produit. Le fermoir est solide. Je recommande Matjar-Ekom sans hésiter.",
-      textAr: "الصورة مطابقة للمنتج. الإغلاق متين. أنصح بـ Matjar-Ekom بكل ثقة."
+      textFr: "Photo fidèle au produit. Le fermoir est solide. Je recommande MatjarEkom sans hésiter.",
+      textAr: "الصورة مطابقة للمنتج. الإغلاق متين. أنصح بـ MatjarEkom بكل ثقة."
     }
   ];
 
@@ -584,7 +574,7 @@
   var TRANSLATIONS = {
     fr: {
       welcomeKicker:  "Bijoux & accessoires",
-      welcomeHeadline:"Bienvenue sur Matjar-Ekom",
+      welcomeHeadline:"Welcome to MatjarEkom",
       galleryHint:    "Faites défiler les miniatures ou utilisez les flèches.",
       eyebrow:        "Nouvelle collection",
       productName:    "Bracelet « Nour » — plaqué or",
@@ -598,14 +588,14 @@
       footnote:       "Emballage cadeau offert",
       orderWhatsApp:  "Commander sur WhatsApp",
       waBtnAria:      "Ouvrir WhatsApp pour commander le bracelet Nour",
-      waPrefill:      "Bonjour Matjar-Ekom, je souhaite commander le bracelet « Nour » à 349 DH. Merci de me confirmer la disponibilité et la livraison.",
+      waPrefill:      "Bonjour MatjarEkom, je souhaite commander le bracelet « Nour » à 349 DH. Merci de me confirmer la disponibilité et la livraison.",
       reviewsTitle:   "Avis clients",
       reviewsSub:     "Des retours authentiques sur le bracelet Nour.",
-      footer:         "© Matjar-Ekom — bijoux et accessoires sélectionnés."
+      footer:         "© MatjarEkom — bijoux et accessoires sélectionnés."
     },
     ar: {
       welcomeKicker:  "مجوهرات وإكسسوارات",
-      welcomeHeadline:"مرحبًا بك في Matjar-Ekom",
+      welcomeHeadline:"مرحبًا بك في MatjarEkom",
       galleryHint:    "مرّر المصغّرات أو استخدم الأسهم.",
       eyebrow:        "تشكيلة جديدة",
       productName:    "سوار « نور » — مطلي بالذهب",
@@ -619,10 +609,10 @@
       footnote:       "تغليف هدية مجاني",
       orderWhatsApp:  "اطلب عبر واتساب",
       waBtnAria:      "فتح واتساب لطلب سوار نور",
-      waPrefill:      "مرحبًا Matjar-Ekom، أرغب في طلب سوار « نور » بسعر 349 درهم. الرجاء تأكيد التوفر والتوصيل.",
+      waPrefill:      "مرحبًا MatjarEkom، أرغب في طلب سوار « نور » بسعر 349 درهم. الرجاء تأكيد التوفر والتوصيل.",
       reviewsTitle:   "آراء العملاء",
       reviewsSub:     "تجارب حقيقية حول سوار نور.",
-      footer:         "© Matjar-Ekom — مجوهرات وإكسسوارات مختارة."
+      footer:         "© MatjarEkom — مجوهرات وإكسسوارات مختارة."
     }
   };
 
@@ -851,7 +841,7 @@
       btnAr.setAttribute("aria-pressed", lang === "ar" ? "true" : "false");
 
       // Titre onglet
-      document.title = lang === "ar" ? "Matjar-Ekom — سوار نور" : "Matjar-Ekom — Bracelet Nour";
+      document.title = lang === "ar" ? "MatjarEkom — سوار نور" : "MatjarEkom — Bracelet Nour";
 
       try { localStorage.setItem("matjar-lang", lang); } catch (e) {}
     }
