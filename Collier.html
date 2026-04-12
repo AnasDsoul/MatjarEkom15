@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="MatjarEkom — Bracelet Nour plaqué or. Commandez en ligne. Livraison rapide." />
-  <title>MatjarEkom — Bracelet Nour</title>
+  <meta name="description" content="Matjar-Ekom — Collier. Commandez en ligne. Livraison rapide." />
+  <title>Matjar-Ekom — Collier</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Noto+Sans+Arabic:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -79,12 +79,19 @@
       padding: .75rem 0;
     }
     .logo {
+      display: inline-flex; align-items: center; gap: .55rem;
       font-family: var(--font-display);
-      font-size: 1.35rem; font-weight: 700;
-      color: var(--ink); letter-spacing: .04em;
+      font-size: clamp(1.2rem, 2.8vw, 1.55rem);
+      font-weight: 700;
+      color: var(--ink); letter-spacing: .03em;
+      max-width: min(100%, 22rem);
     }
-    html[lang="ar"] .logo { font-family: var(--font-ar); font-size: 1.15rem; }
-    .logo span { color: var(--gold-dark); font-weight: 600; }
+    html[lang="ar"] .logo { font-family: var(--font-ar); font-size: clamp(1.05rem, 2.5vw, 1.3rem); }
+    .logo .logo-accent { color: var(--gold-dark); font-weight: 600; }
+    .logo-img {
+      height: clamp(48px, 8vw, 58px); width: auto; max-width: min(200px, 42vw);
+      object-fit: contain; flex-shrink: 0;
+    }
 
     .header-actions { display: flex; align-items: center; gap: .65rem; flex-wrap: wrap; }
 
@@ -198,7 +205,7 @@
       will-change: transform;
     }
     .pdp-gallery__slide { width: 20%; flex-shrink: 0; height: 100%; background: #e8e4de; }
-    .pdp-gallery__slide img { width: 100%; height: 100%; object-fit: cover; }
+    .pdp-gallery__slide img { width: 100%; height: 100%; object-fit: cover;}
 
     .pdp-gallery__nav {
       position: absolute; top: 50%; transform: translateY(-50%); z-index: 3;
@@ -246,7 +253,7 @@
       scroll-snap-align: start; background: #ece8e2;
       transition: border-color .25s, box-shadow .25s, transform .2s;
     }
-    .pdp-gallery__thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .pdp-gallery__thumb img { width: 100%; height: 100%; object-fit: cover;}
     .pdp-gallery__thumb:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(26,22,20,.1); }
     .pdp-gallery__thumb.is-active { border-color: var(--accent); box-shadow: 0 0 0 1px rgba(196,92,38,.25); }
     .pdp-gallery__thumb:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -363,7 +370,10 @@
 
   <header class="header">
     <div class="wrap header-inner">
-      <a href="#" class="logo">Matjar<span>Ekom</span></a>
+      <a href="#" class="logo" dir="ltr" lang="fr" aria-label="Matjar-Ekom">
+        <img src="Gemini_Generated_Image_6xqhlt6xqhlt6xqh.png" alt="" class="logo-img" width="200" height="58" decoding="async" />
+        <span class="logo-text">Matjar-<span class="logo-accent">Ekom</span></span>
+      </a>
       <div class="header-actions">
         <div class="lang-toggle" role="group" aria-label="Language">
           <button type="button" id="lang-fr" aria-pressed="true"  data-set-lang="fr">FR</button>
@@ -387,7 +397,7 @@
     <section class="section" id="product" aria-labelledby="welcome-headline">
       <div class="wrap welcome-block">
         <p class="welcome-kicker" data-i18n="welcomeKicker">Bijoux &amp; accessoires</p>
-        <h1 id="welcome-headline" data-i18n="welcomeHeadline">Welcome to MatjarEkom</h1>
+        <h1 id="welcome-headline" data-i18n="welcomeHeadline">Bienvenue sur Matjar-Ekom</h1>
       </div>
 
       <div class="wrap product-grid">
@@ -418,14 +428,15 @@
         <!-- Texte produit -->
         <div class="product-copy">
           <p class="eyebrow" data-i18n="eyebrow">Nouvelle collection</p>
-          <h2 id="product-title" class="display-font" data-i18n="productName">Bracelet « Nour » — plaqué or</h2>
-          <p class="lede" data-i18n="lede">Élégance discrète, finition miroir. Léger au poignet, pensé pour se porter tous les jours.</p>
+          <h2 id="product-title" class="display-font" data-i18n="productName">Collier élégant avec pierre naturelle – disponible en plusieurs couleurs (orange, rose, noir, bleu)</h2>
+          <p class="lede" data-i18n="lede">Un collier raffiné qui apporte une touche d’élégance et de style à votre tenue quotidienne ou vos occasions spéciales.</p>
           <div class="price-row">
-            <span class="price-current" data-i18n="price">349 DH</span>
-            <span class="price-was"     data-i18n="priceWas">499 DH</span>
+            <span class="price-current" data-i18n="price">130 DH</span>
+            <span class="price-was"     data-i18n="priceWas">185 DH</span>
             <span class="price-badge"   data-i18n="priceBadge">−30%</span>
           </div>
           <ul class="price-perks">
+            <li data-i18n="promotions">Achetez 2 colliers pour seulement 180 DH !</li>
             <li data-i18n="perkFreeShip">Livraison gratuite</li>
             <li data-i18n="perkCod">Paiement à la livraison</li>
             <li data-i18n="perkSupport">Support 7/7</li>
@@ -450,7 +461,7 @@
       <div class="wrap">
         <div class="reviews-head">
           <h2 id="reviews-title" class="display-font" data-i18n="reviewsTitle">Avis clients</h2>
-          <p data-i18n="reviewsSub">Des retours authentiques sur le bracelet Nour.</p>
+          <p data-i18n="reviewsSub">Des retours authentiques sur le bracelet ayat al kursi.</p>
         </div>
         <div class="reviews-grid" id="reviews-grid">
           <!-- Généré par JS depuis REVIEWS_CONFIG -->
@@ -461,7 +472,7 @@
 
   <footer class="footer">
     <div class="wrap">
-      <p data-i18n="footer">© MatjarEkom — bijoux et accessoires sélectionnés.</p>
+      <p data-i18n="footer">© Matjar-Ekom — bijoux et accessoires sélectionnés.</p>
     </div>
   </footer>
 
@@ -482,7 +493,7 @@
      1. BOUTIQUE — numéro WhatsApp (format international, sans +)
   ---------------------------------------------------------- */
   var SHOP_CONFIG = {
-    phone: "212636982701"   // ← Changez ici votre numéro
+    phone: "212708273660"   // ← Changez ici votre numéro
   };
 
   /* ----------------------------------------------------------
@@ -495,28 +506,28 @@
   var PRODUCT_CONFIG = {
     images: [
       {
-        src:   "60721e30-b6fc-4ac9-b2ad-45997d3c097f.jpg",
-        altFr: "Bracelet Nour — vue portée, poignet",
-        altAr: "سوار نور — لقطة على المعصم",
+        src:   "Gemini_Generated_Image_bznddmbznddmbznd.jpg",
+        altFr: "Collier — vue portée, poignet",
+        altAr: "قلادة أنيقة بحجر",
         eager: true
       },
       {
-        src:   "295e741a-fdbd-4f76-87f3-5584ea04a342.jpg",
+        src:   "68434fa8-9e1b-439c-8e36-68bc05774ebd.jpg",
         altFr: "Gros plan — détails du chaînon et du fermoir",
         altAr: "لقطة قريبة — حلقات السوار والإغلاق"
       },
       {
-        src:   "a070626d-b8fc-43fd-85fd-b8d57b5e1644.jpg",
+        src:   "f591457e-6b12-4644-b267-9192082d9e30.jpg",
         altFr: "Style de vie — bracelet au quotidien",
         altAr: "لقطة حياتية — السوار في اليوم العادي"
       },
       {
-        src:   "b5fbbf38-4aed-499d-a16e-873f3e784e12.jpg",
+        src:   "e7deed98-2178-461f-aded-4f6a10ee9cf9.jpg",
         altFr: "Plateau — finition dorée et reflets",
         altAr: "عرض مسطح — اللمسة الذهبية والانعكاس"
       },
       {
-        src:   "https://images.unsplash.com/photo-1522312346374-d1a52e2b99ab?w=800&q=82&auto=format&fit=crop",
+        src:   "Gemini_Generated_Image_n0ypg9n0ypg9n0yp.jpg",
         altFr: "Lifestyle — élégance discrète",
         altAr: "أناقة بسيطة في الإطلالة"
       }
@@ -562,8 +573,8 @@
       stars: 5,
       nameFr: "Amine H.",       nameAr: "أمين ح.",
       locFr:  "Marrakech",      locAr:  "مراكش",
-      textFr: "Photo fidèle au produit. Le fermoir est solide. Je recommande MatjarEkom sans hésiter.",
-      textAr: "الصورة مطابقة للمنتج. الإغلاق متين. أنصح بـ MatjarEkom بكل ثقة."
+      textFr: "Photo fidèle au produit. Le fermoir est solide. Je recommande Matjar-Ekom sans hésiter.",
+      textAr: "الصورة مطابقة للمنتج. الإغلاق متين. أنصح بـ Matjar-Ekom بكل ثقة."
     }
   ];
 
@@ -572,50 +583,52 @@
      Modifiez les valeurs, ne changez pas les clés.
   ---------------------------------------------------------- */
   var TRANSLATIONS = {
-    fr: {
-      welcomeKicker:  "Bijoux & accessoires",
-      welcomeHeadline:"Welcome to MatjarEkom",
-      galleryHint:    "Faites défiler les miniatures ou utilisez les flèches.",
-      eyebrow:        "Nouvelle collection",
-      productName:    "Bracelet « Nour » — plaqué or",
-      lede:           "Élégance discrète, finition miroir. Léger au poignet, pensé pour se porter tous les jours.",
-      price:          "349 DH",          // ← Prix actuel
-      priceWas:       "499 DH",          // ← Ancien prix (barré)
-      priceBadge:     "−30%",            // ← Badge de réduction
-      perkFreeShip:   "Livraison gratuite",
-      perkCod:        "Paiement à la livraison",
-      perkSupport:    "Support 7/7",
-      footnote:       "Emballage cadeau offert",
-      orderWhatsApp:  "Commander sur WhatsApp",
-      waBtnAria:      "Ouvrir WhatsApp pour commander le bracelet Nour",
-      waPrefill:      "Bonjour MatjarEkom, je souhaite commander le bracelet « Nour » à 349 DH. Merci de me confirmer la disponibilité et la livraison.",
-      reviewsTitle:   "Avis clients",
-      reviewsSub:     "Des retours authentiques sur le bracelet Nour.",
-      footer:         "© MatjarEkom — bijoux et accessoires sélectionnés."
-    },
-    ar: {
-      welcomeKicker:  "مجوهرات وإكسسوارات",
-      welcomeHeadline:"مرحبًا بك في MatjarEkom",
-      galleryHint:    "مرّر المصغّرات أو استخدم الأسهم.",
-      eyebrow:        "تشكيلة جديدة",
-      productName:    "سوار « نور » — مطلي بالذهب",
-      lede:           "أناقة هادئة ولمعان كالمرآة. خفيف على المعصم، مناسب لليوم كامل.",
-      price:          "349 درهم",        // ← السعر الحالي
-      priceWas:       "499 درهم",        // ← السعر القديم
-      priceBadge:     "خصم 30٪",
-      perkFreeShip:   "توصيل مجاني",
-      perkCod:        "الدفع عند الاستلام",
-      perkSupport:    "دعم 7/7",
-      footnote:       "تغليف هدية مجاني",
-      orderWhatsApp:  "اطلب عبر واتساب",
-      waBtnAria:      "فتح واتساب لطلب سوار نور",
-      waPrefill:      "مرحبًا MatjarEkom، أرغب في طلب سوار « نور » بسعر 349 درهم. الرجاء تأكيد التوفر والتوصيل.",
-      reviewsTitle:   "آراء العملاء",
-      reviewsSub:     "تجارب حقيقية حول سوار نور.",
-      footer:         "© MatjarEkom — مجوهرات وإكسسوارات مختارة."
-    }
-  };
+  fr: {
+    welcomeKicker:  "Bijoux & accessoires",
+    welcomeHeadline:"Bienvenue sur Matjar-Ekom",
+    galleryHint:    "Faites défiler les miniatures ou utilisez les flèches.",
+    eyebrow:        "Nouvelle collection",
+    productName:    "Collier élégant avec pierre naturelle – disponible en plusieurs couleurs (orange, rose, noir, bleu)",
+    lede:           "Un collier raffiné qui apporte une touche d’élégance et de style à votre tenue quotidienne ou vos occasions spéciales.",
+    price:          "130 DH",
+    priceWas:       "185 DH",
+    priceBadge:     "−30%",
+    promotions:     "Achetez 2 colliers pour seulement 180 DH !",
+    perkFreeShip:   "Livraison gratuite",
+    perkCod:        "Paiement à la livraison",
+    perkSupport:    "Support 7/7",
+    footnote:       "Emballage cadeau offert",
+    orderWhatsApp:  "Commander sur WhatsApp",
+    waBtnAria:      "Ouvrir WhatsApp pour commander le collier",
+    waPrefill:      "Bonjour Matjar-Ekom, je souhaite passer une commande de collier avec pierre. Merci de me confirmer la disponibilité et la livraison.",
+    reviewsTitle:   "Avis clients",
+    reviewsSub:     "Des retours authentiques sur nos colliers élégants.",
+    footer:         "© Matjar-Ekom — bijoux et accessoires sélectionnés."
+  },
 
+  ar: {
+    welcomeKicker:  "مجوهرات وإكسسوارات",
+    welcomeHeadline:"مرحبًا بك في Matjar-Ekom",
+    galleryHint:    "مرّر المصغّرات أو استخدم الأسهم.",
+    eyebrow:        "تشكيلة جديدة",
+    productName:    "قلادة أنيقة بحجر طبيعي – متوفرة بعدة ألوان (برتقالي، وردي، أسود، أزرق)",
+    lede:           "قلادة راقية تضيف لمسة أناقة لإطلالتك اليومية أو في المناسبات الخاصة.",
+    price:          "130 درهم",
+    priceWas:       "185 درهم",
+    priceBadge:     "خصم 30٪",
+    promotions:     "احصل على قلادتين مقابل 180 درهم فقط!",
+    perkFreeShip:   "توصيل مجاني",
+    perkCod:        "الدفع عند الاستلام",
+    perkSupport:    "دعم 7/7",
+    footnote:       "تغليف هدية مجاني",
+    orderWhatsApp:  "اطلب عبر واتساب",
+    waBtnAria:      "فتح واتساب لطلب القلادة",
+    waPrefill:      "مرحبًا Matjar-Ekom، أرغب في طلب قلادة بحجر. المرجو تأكيد التوفر والتوصيل.",
+    reviewsTitle:   "آراء العملاء",
+    reviewsSub:     "تجارب حقيقية حول القلادات الأنيقة.",
+    footer:         "© Matjar-Ekom — مجوهرات وإكسسوارات مختارة."
+  }
+};
   /* ============================================================
      ╔══════════════════════════════════════════════════════════╗
      ║              ⚙  LOGIQUE — ne pas modifier                ║
@@ -841,7 +854,7 @@
       btnAr.setAttribute("aria-pressed", lang === "ar" ? "true" : "false");
 
       // Titre onglet
-      document.title = lang === "ar" ? "MatjarEkom — سوار نور" : "MatjarEkom — Bracelet Nour";
+      document.title = lang === "ar" ? "MatjarEkom —قلادة أنيقة بحجر" : "MatjarEkom — Collier";
 
       try { localStorage.setItem("matjar-lang", lang); } catch (e) {}
     }
