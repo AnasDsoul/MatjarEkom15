@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -388,8 +388,9 @@
       </a>
       <div class="header-actions">
         <div class="lang-toggle" role="group" aria-label="Language">
-          <button type="button" id="lang-fr" aria-pressed="true"  data-set-lang="fr">FR</button>
-          <button type="button" id="lang-ar" aria-pressed="false" data-set-lang="ar">العربية</button>
+          <button type="button" id="lang-fr" aria-pressed="false" data-set-lang="fr">FR</button>
+          <button type="button" id="lang-ar" aria-pressed="true"  data-set-lang="ar">العربية</button>
+          
         </div>
         <a class="btn-wa" id="wa-header"
            href="#" target="_blank" rel="noopener noreferrer"
@@ -876,14 +877,14 @@
     btnAr.addEventListener("click", function () { setLang("ar"); });
 
     initGallery();
-    renderReviews("fr");
+    renderReviews("ar");
 
     try {
       var saved = localStorage.getItem("matjar-lang");
       if (saved === "ar" || saved === "fr") setLang(saved);
-      else setLang("fr");
+      else setLang("ar");
     } catch (e) {
-      setLang("fr");
+      setLang("ar");
     }
 
   })();
