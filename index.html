@@ -869,8 +869,13 @@
         if (!a) return;
         a.setAttribute("aria-label", t.waBtnAria);
         a.href = waUrl(t.waPrefill);
-      });
 
+        // 🔥 TRACK CLICK WHATSAPP
+        a.addEventListener("click", function () {
+        fbq('track', 'Contact');
+        });
+      });
+     
       // Avis
       renderReviews(lang);
 
